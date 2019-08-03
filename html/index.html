@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo,
+        #demo1,
+        #demo2 {
+            width: 300px;
+            height: 50px;
+            background-color: lightblue;
+            margin: 10px;
+        }
+        .intro{
+            width: 300px;
+            height: 50px;
+            background-color: lightblue;
+            margin: 10px;
+        }
+        /* h2:nth-child(2){
+            background-color: red;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <div id="demo">div1</div>
+
+
+    <button>Hide</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <!-- <script src="../js/jquery-3.4.1.min.js"></script> -->
+    <script>
+        //jQuery syntax : $(selector).action()
+        // $('p').click(function () {
+        //     //current object not hide all p 
+        //     $(this).hide()
+        // })
+        //----------------------------
+        // $('button').click(function(){
+        //     $('p:first').hide()
+        // })
+        //----------------------------
+        // $('button').click(function(){
+        //     $('ul li:first-child').hide()
+        //     $('ul li:first').hide()
+        // })
+        //----------------------
+        // $('button').click(function () {
+        //     $('tr:odd').css("background-color", "red")
+        // })
+        // $('p,h1').css("background-color", "red")
+
+        // $('button').click(function(){
+
+        //     $('h1').toggle(3000, function(){
+        //        // $(this).show(3000)
+        //     })
+        // })
+        // $('button').click(function () {
+        //     // $("#demo").fadeOut();
+        //     // $("#demo1").fadeOut("slow");
+        //     // $("#demo2").fadeOut(5000);
+
+        //     //fadeIn, fadeToggle
+
+        //     //$('#demo2').fadeTo('slow', 0.5)
+        //     $('h2:last').css('background-color','red');
+        //     $('div.intro').css('background-color','yellow')
+        //     $('h2:nth-child(2)').css('background-color','blue');
+
+        // })
+        $('button').click(function(){
+            $('#demo').slideUp(3000, function(){
+                $(this).slideDown(3000)
+            })
+        })
+    </script>
+</body>
+
+</html>
