@@ -30,6 +30,7 @@ $(function(){
         insertNewArticle(article)
     })
 })
+
 function insertNewArticle(article){
     //create tr and td 
     var content = ""
@@ -40,5 +41,9 @@ function insertNewArticle(article){
             <td>${article.lname}</td>
         </tr>
     `
-    $('tbody').append(content)
+    $('tbody').prepend(content)
+    // toastr.info("add success")
+    // toastr.warning("erty")
+    // toastr.error("error")
+    toastr.info("successfully added")
 }
