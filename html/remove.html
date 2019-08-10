@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .importance{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>hello</p>
+    </div>
+    <div id="demo">
+        <p>hello div </p>
+    </div>
+    <button>Apply</button>
+    <button id="remove">Remove</button>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $('button').click(function(){
+                //jQuery css
+                $('div').addClass('importance')
+                $('#demo').css({
+                    "width": "100px",
+                    "height": "100px",
+                    "background": "red"
+                })
+            })
+            $('#remove').click(function(){
+                //remove: remove all
+                $('#demo').remove()
+                //empty: remove only its child
+                $('#demo').empty()
+            })
+        })
+    </script>
+</body>
+</html>

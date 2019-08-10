@@ -19,19 +19,33 @@
 // })
 
 
-$(function(){
-    $('#frm').submit(function(e){
-        e.preventDefault()
+$(function () {
+    $('#showModal').click(function () {
+        //show modal
+        $('#modalArticle').modal('show')
+        $('#titleModal').text("Add")
+        $('#idUser').val("")
+        $('#username').val("")
+        $('#phone').val("")
+
+    })
+    //handle when click save
+    $('#save').click(function () {
         let article = {
-            id: $('#username').val(),
-            fname: $('#phone').val(),
+            id: $('#idUser').val(),
+            fname: $('#username').val(),
             lname: $('#phone').val()
         }
-        insertNewArticle(article)
+        if ($('#titleModal').text() == "Add"){
+            insertNewArticle(article)
+        }else{
+            updateArticle(article)
+        }
+        
     })
 })
 
-function insertNewArticle(article){
+function insertNewArticle(article) {
     //create tr and td 
     var content = ""
     content = `
@@ -39,11 +53,47 @@ function insertNewArticle(article){
             <th>${article.id}</th>
             <td>${article.fname}</td>
             <td>${article.lname}</td>
+            <td><button class="btn btn-danger" onclick="deleteArticle(this)"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-primary" onclick="editArticle(this)"><i class="fas fa-edit"></i></button></td>
         </tr>
     `
-    $('tbody').prepend(content)
-    // toastr.info("add success")
-    // toastr.warning("erty")
-    // toastr.error("error")
+    $('tbody').append(content)
     toastr.info("successfully added")
+    $('#modalArticle').modal('hide')
+}
+
+function deleteArticle(btn) {
+    // console.log(btn)
+    let c = confirm("Are you sure?")
+    if (c == true) {
+        let row = $(btn).parents('tr')
+        row.remove()
+        toastr.success("succesfully deleted")
+    }
+}
+function editArticle(btn){
+    $('#modalArticle').modal('show')
+    $('#titleModal').text("Update")
+    $('#idUser').val($(btn).parent().siblings('th').text())
+    console.log($(btn).parent().siblings('td').eq(0).text());
+    $('#username').val($(btn).parent().siblings('td').eq(0).text())
+    $('#phone').val($(btn).parent().siblings('td').eq(1).text())
+
+    let row = $(btn).parents('tr')
+    row.addClass('rowShouldUpdate')
+
+}
+function updateArticle(article){
+    var content = ""
+    content = `
+            <th>${article.id}</th>
+            <td>${article.fname}</td>
+            <td>${article.lname}</td>
+            <td><button class="btn btn-danger" onclick="deleteArticle(this)"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-primary" onclick="editArticle(this)"><i class="fas fa-edit"></i></button></td>
+       
+    `
+    $('.rowShouldUpdate').html(content)
+    toastr.info("update sucessfully")
+    $('#modalArticle').modal('hide')
 }
